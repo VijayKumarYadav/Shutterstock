@@ -66,6 +66,17 @@ public class MainActivity extends FragmentActivity implements OnCompletionListen
         mProgessBar = (ProgressBar) findViewById(R.id.progress_bar);
         makeNetworkRequest();
     }
+    
+     @Override
+    public void onConfigurationChanged(final Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mGridView.setNumColumns(4);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mGridView.setNumColumns(3);
+        }
+    }
 
     /**
      * Method to make a network request
